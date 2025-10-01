@@ -55,7 +55,6 @@ jobs:
           docker push mghaith/multi-container-app
 
       - name: Deploy with Ansible
-        working-directory: ./ansible
         uses: dawidd6/action-ansible-playbook@v4
         with:
           playbook: playbook.yml

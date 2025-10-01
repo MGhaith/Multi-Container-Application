@@ -1,0 +1,21 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Install docker-compose
+      apt:
+        name: docker-compose
+        state: present
+
+    - name: Pull and run app
+      shell: |
+        docker-compose down || true
+        docker-compose pull
+        docker-compose up -d
+      args:
+        chdir: /home/ubuntu/multi-container-app

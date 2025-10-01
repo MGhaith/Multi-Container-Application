@@ -20,6 +20,14 @@
         group: ubuntu
         mode: '0755'
 
+    - name: Copy docker-compose.yml to server
+      copy:
+        src: ../docker-compose.yml
+        dest: /home/ubuntu/multi-container-app/docker-compose.yml
+        owner: ubuntu
+        group: ubuntu
+        mode: '0644'
+
     - name: Pull and run app
       shell: |
         docker-compose down || true

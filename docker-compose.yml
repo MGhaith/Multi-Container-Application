@@ -14,6 +14,8 @@ services:
     restart: always
     volumes:
       - mongo-data:/data/db
+      - mongo-config:/data/configdb
 
 volumes:
   mongo-data:
+  mongo-config:

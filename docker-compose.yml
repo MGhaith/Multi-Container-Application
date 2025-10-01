@@ -1,7 +1,6 @@
 services:
   api:
-    build: ./node_api
-    image: multi-container-application-api
+    image: mghaith/multi-container-app:latest
     ports:
       - "3000:3000"
     environment:

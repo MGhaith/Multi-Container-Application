@@ -1,5 +1,5 @@
 # Multi-Container Application (WIP)
-Use Docker Compose to run a multi-container application
+This project uses Docker Compose to orchestrate a multi-container environment consisting of a Node.js API and a MongoDB database. Infrastructure is provisioned with Terraform, the EC2 instance is configured via Ansible, and the entire stack is built and deployed to AWS using a GitHub Actions CI/CD pipeline.
 
 ## Project Structure
 The project follows a standard directory structure:

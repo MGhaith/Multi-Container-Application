@@ -12,6 +12,14 @@
         name: docker-compose
         state: present
 
+    - name: Ensure app directory exists
+      file:
+        path: /home/ubuntu/multi-container-app
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
+
     - name: Pull and run app
       shell: |
         docker-compose down || true

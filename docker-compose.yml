@@ -1,0 +1,19 @@
+services:
+  api:
+    build: ./node_api
+    image: multi-container-application-api
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/todos
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:8.0
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

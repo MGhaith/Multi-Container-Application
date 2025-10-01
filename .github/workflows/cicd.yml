@@ -58,10 +58,6 @@ jobs:
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
           docker push mghaith/multi-container-app
         
-      - name: Check server IP
-        run: | 
-          echo "Server IP: ${{ needs.build-infra.outputs.server_ip }}"
-        
       - name: Deploy with Ansible
         uses: dawidd6/action-ansible-playbook@v4
         with:

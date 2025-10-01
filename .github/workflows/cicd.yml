@@ -65,7 +65,9 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v4
         with:
           playbook: playbook.yml
-          inventory: myserver ansible_host=${{ needs.build-infra.outputs.server_ip }} ansible_user=ubuntu
+          inventory: |
+            [all]
+            myserver ansible_host=${{ needs.build-infra.outputs.server_ip }} ansible_user=ubuntu
           directory: ./ansible
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 

@@ -221,6 +221,21 @@ To destroy the infrastructure created by this project, follow these steps:
     ```
 3. Enter you public key content from `~/.ssh/id_rsa.pub` and confirm the destruction when prompted.
 
+## Node.js API Application
+
+The Node.js API is a lightweight RESTful service built with Express and Mongoose that provides CRUD operations for Todo items. It listens on port 3000 and connects to MongoDB via the `MONGO_URL` environment variable.
+
+### Core Files
+- **server.js** – Entry point that bootstraps Express, wires middleware, connects to MongoDB, and mounts the `/todos` router.
+- **models/todo.js** – Mongoose schema defining a Todo with `title` (required string) and `completed` (boolean, default false).
+- **routes/todos.js** – Express router exposing endpoints:
+  - `GET /todos` – list all todos
+  - `POST /todos` – create a new todo
+  - `GET /todos/:id` – fetch a single todo
+  - `PUT /todos/:id` – update a todo
+  - `DELETE /todos/:id` – remove a todo
+- **package.json** – Dependencies: Express 5.1.0 & Mongoose 8.0.0; dev script uses nodemon for local development.
+
 ## GitHub Actions CI/CD Workflow
 
 The GitHub Actions workflow (`./.github/workflows/cicd.yml`) automates the entire deployment pipeline through three sequential jobs:

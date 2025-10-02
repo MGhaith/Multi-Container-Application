@@ -26,6 +26,21 @@ The project follows a standard directory structure:
 1. Once the deployment is complete, check the Actions tab in your repository to verify that the deployment job has passed.
 2. Access the deployed service using the public IP outputted by **Terraform** or the **AWS EC2 Console** with the port (e.g., `http://<public-ip>:3000`). You should see the “Todo API is running. Use /todos to interact with the API.” message.
 3. Try accessing the `/todos` endpoint. You should see an empty array `[]`.
+4. Test the `/todos` endpoint with POST, PUT, DELETE methods to ensure CRUD operations work as expected using one of these methods:
+    - Test with `curl`:
+        ```bash
+        # Create a todo
+        curl -X POST -H "Content-Type: application/json" -d '{"title": "Buy groceries"}' http://<public-ip>:3000/todos
+
+        # Get all todos
+        curl http://<public-ip>:3000/todos
+        
+        # Update a todo
+        curl -X PUT -H "Content-Type: application/json" -d '{"title": "Buy groceries", "completed": true}' http://<public-ip>:3000/todos/<id>
+        
+        # Delete a todo
+        curl -X DELETE http://<public-ip>:3000/todos/<id>
+        ```
 ### Infrastructure Destruction
 To destroy the infrastructure created by this project, follow these steps:
 1. Navigate to the project directory.

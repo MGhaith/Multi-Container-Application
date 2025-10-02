@@ -173,6 +173,9 @@ services:
 
         # Get all todos
         curl http://<public-ip>:3000/todos
+
+        # Get a single todo
+        curl http://<public-ip>:3000/todos/<id>
         
         # Update a todo
         curl -X PUT -H "Content-Type: application/json" -d '{"title": "Buy groceries", "completed": true}' http://<public-ip>:3000/todos/<id>
@@ -194,6 +197,10 @@ services:
         - **Get all todos**  
           Method: GET  
           URL: `http://<public-ip>:3000/todos`
+
+        - **Get a single todo**  
+          Method: GET  
+          URL: `http://<public-ip>:3000/todos/<id>`
 
         - **Update a todo**  
           Method: PUT  

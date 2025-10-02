@@ -1,6 +1,6 @@
 services:
   api:
-    image: mghaith/multi-container-app:latest
+    image: yourdockerhubusername/multi-container-app:latest
     ports:
       - "3000:3000"
     environment:

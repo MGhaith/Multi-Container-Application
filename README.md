@@ -41,6 +41,36 @@ The project follows a standard directory structure:
         # Delete a todo
         curl -X DELETE http://<public-ip>:3000/todos/<id>
         ```
+    - Postman:
+        - **Create a todo**  
+          Method: POST  
+          URL: `http://<public-ip>:3000/todos`  
+          Body (raw JSON):
+          ```json
+          {
+              "title": "Buy groceries"
+          }
+          ```
+
+        - **Get all todos**  
+          Method: GET  
+          URL: `http://<public-ip>:3000/todos`
+
+        - **Update a todo**  
+          Method: PUT  
+          URL: `http://<public-ip>:3000/todos/<id>`  
+          Body (raw JSON):
+          ```json
+          {
+              "title": "Buy groceries",
+              "completed": true
+          }
+          ```
+
+        - **Delete a todo**  
+          Method: DELETE  
+          URL: `http://<public-ip>:3000/todos/<id>`
+
 ### Infrastructure Destruction
 To destroy the infrastructure created by this project, follow these steps:
 1. Navigate to the project directory.

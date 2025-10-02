@@ -22,6 +22,10 @@ The project follows a standard directory structure:
             └── ci.yml # GitHub Actions workflow for CI/CD
 ```
 
+## Verification and Testing
+1. Once the deployment is complete, check the Actions tab in your repository to verify that the deployment job has passed.
+2. Access the deployed service using the public IP outputted by **Terraform** or the **AWS EC2 Console** with the port (e.g., `http://<public-ip>:3000`). You should see the “Todo API is running. Use /todos to interact with the API.” message.
+3. Try accessing the `/todos` endpoint. You should see an empty array `[]`.
 ### Infrastructure Destruction
 To destroy the infrastructure created by this project, follow these steps:
 1. Navigate to the project directory.

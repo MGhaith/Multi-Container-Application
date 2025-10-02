@@ -243,6 +243,17 @@ The Node.js API is a lightweight RESTful service built with Express and Mongoose
   - `DELETE /todos/:id` – remove a todo
 - **package.json** – Dependencies: Express 5.1.0 & Mongoose 8.0.0; dev script uses nodemon for local development.
 
+## Ansible Configuration
+
+The Ansible playbook (`./ansible/playbook.yml`) automates the configuration of the EC2 instance after Terraform provisions it. The playbook runs as root and performs the following tasks:
+
+1. Installs Docker (`docker.io`) and Docker Compose on the target host.
+2. Creates the application directory `/home/ubuntu/multi-container-app` with proper ownership for the ubuntu user.
+3. Copies the local `docker-compose.yml` file to the server.
+4. Pulls the latest images and starts the multi-container stack in detached mode.
+
+This ensures the Node.js API and MongoDB containers are up and running immediately after the infrastructure is created.
+
 ## GitHub Actions CI/CD Workflow
 
 The GitHub Actions workflow (`./.github/workflows/cicd.yml`) automates the entire deployment pipeline through three sequential jobs:

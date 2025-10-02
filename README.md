@@ -22,6 +22,17 @@ The project follows a standard directory structure:
             └── ci.yml # GitHub Actions workflow for CI/CD
 ```
 
+### Infrastructure Destruction
+To destroy the infrastructure created by this project, follow these steps:
+1. Navigate to the project directory.
+2. Ensure you have Terraform installed and configured with AWS credentials.
+3. Run the following command to destroy the resources:
+    ```
+    cd terraform
+    terraform destroy
+    ```
+3. Enter you public key content from `~/.ssh/id_rsa.pub` and confirm the destruction when prompted.
+
 ## GitHub Actions CI/CD Workflow
 
 The GitHub Actions workflow (`./.github/workflows/cicd.yml`) automates the entire deployment pipeline through three sequential jobs:

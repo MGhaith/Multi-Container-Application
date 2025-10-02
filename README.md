@@ -21,3 +21,6 @@ The project follows a standard directory structure:
     └── workflows/
             └── ci.yml # GitHub Actions workflow for CI/CD
 ```
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/MGhaith/Multi-Container-Application/blob/main/LICENSE) file for details.

@@ -243,6 +243,19 @@ The Node.js API is a lightweight RESTful service built with Express and Mongoose
   - `DELETE /todos/:id` – remove a todo
 - **package.json** – Dependencies: Express 5.1.0 & Mongoose 8.0.0; dev script uses nodemon for local development.
 
+## Terraform Infrastructure
+
+The Terraform module under `./terraform/` defines the minimal AWS resources required to run the application:
+
+| File | Purpose |
+|------|---------|
+| `provider.tf` | Pins the AWS provider to `~> 6.0` and sets the default region to `us-east-1`. |
+| `backend.tf` | Configures remote state in the S3 bucket you created earlier and uses DynamoDB for state locking. |
+| `main.tf` | Creates:<br>• A key pair (`multi-container-app-key`) from your public key.<br>• A `t3.micro` Ubuntu 24.04 EC2 instance tagged `multi-container-app-server`.<br>• A security group `allow_http_ssh` that opens:<br>&nbsp;&nbsp;– TCP 22 (SSH) from anywhere<br>&nbsp;&nbsp;– TCP 3000 (Node API) from anywhere<br>&nbsp;&nbsp;– All outbound traffic. |
+| `outputs.tf` | Exports the instance’s public IP as `server_ip` so the CI/CD job can feed it to Ansible. |
+
+All resources are destroyed cleanly when you run `terraform destroy`.
+
 ## Ansible Configuration
 
 The Ansible playbook (`./ansible/playbook.yml`) automates the configuration of the EC2 instance after Terraform provisions it. The playbook runs as root and performs the following tasks:
